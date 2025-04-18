@@ -1,7 +1,7 @@
 # 🎞️ video_skimmer
 
 A lightweight Flutter widget that brings Final Cut-style video skimming to your apps.
-Hover your mouse across the video container and preview frames instantly — just like pro editing tools!
+Hover your mouse across the video container and preview frames instantly, just like pro editing tools!
 
 Built with ❤️ for MacOS and Windows. Contributions welcome to extend platform support and squash bugs!
 
@@ -22,7 +22,7 @@ You can add video_skimmer to your project in two ways:
 Add video_skimmer to your pubspec.yaml dependencies:
 ```yaml
 dependencies:
-  video_skimmer: ^1.0.0  # Replace with the latest version
+  video_skimmer: ^0.0.1  # Replace with the latest version
 ```
 
 Then run:
