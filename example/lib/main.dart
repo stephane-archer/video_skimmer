@@ -6,6 +6,13 @@ void main() {
   runApp(const VideoSkimmerApp());
 }
 
+class VideoSelectorScreen extends StatefulWidget {
+  const VideoSelectorScreen({super.key});
+
+  @override
+  State<VideoSelectorScreen> createState() => _VideoSelectorScreenState();
+}
+
 class VideoSkimmerApp extends StatelessWidget {
   const VideoSkimmerApp({super.key});
 
@@ -18,25 +25,8 @@ class VideoSkimmerApp extends StatelessWidget {
   }
 }
 
-class VideoSelectorScreen extends StatefulWidget {
-  const VideoSelectorScreen({super.key});
-
-  @override
-  State<VideoSelectorScreen> createState() => _VideoSelectorScreenState();
-}
-
 class _VideoSelectorScreenState extends State<VideoSelectorScreen> {
   String? _videoPath;
-
-  Future<void> _pickVideo() async {
-    final result = await FilePicker.platform.pickFiles(type: FileType.video);
-
-    if (result != null && result.files.single.path != null) {
-      setState(() {
-        _videoPath = result.files.single.path!;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +54,43 @@ class _VideoSelectorScreenState extends State<VideoSelectorScreen> {
                     debugPrint(
                       'Selected frame at: ${frame.videoTimestampInSeconds}s',
                     );
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text(
+                            'Frame at ${frame.videoTimestampInSeconds.toStringAsFixed(2)}s',
+                          ),
+                          content: SizedBox(
+                            width: 400,
+                            height: 225, // Maintain 16:9 aspect ratio
+                            child: RawImage(
+                              image: frame.image,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Center(child: const Text('Close')),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                 ),
       ),
     );
+  }
+
+  Future<void> _pickVideo() async {
+    final result = await FilePicker.platform.pickFiles(type: FileType.video);
+
+    if (result != null && result.files.single.path != null) {
+      setState(() {
+        _videoPath = result.files.single.path!;
+      });
+    }
   }
 }
