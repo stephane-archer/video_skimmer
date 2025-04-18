@@ -1,39 +1,69 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# 🎞️ video_skimmer
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A lightweight Flutter widget that brings Final Cut-style video skimming to your apps.
+Hover your mouse across the video container and preview frames instantly — just like pro editing tools!
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+Built with ❤️ for MacOS and Windows. Contributions welcome to extend platform support and squash bugs!
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## ✨ Features
 
-## Features
+- Skim through video by simply hovering your mouse.
+- Preview frames dynamically with minimal lag.
+- Timestamp indicator follows your cursor.
+- Tap to select a frame and get the video timestamp + image.
+- Supports 16:9 video preview layout by default.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 📦 Installation
 
-## Getting started
+You can add video_skimmer to your project in two ways:
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Option 1: Manually edit pubspec.yaml
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+Add video_skimmer to your pubspec.yaml dependencies:
+```yaml
+dependencies:
+  video_skimmer: ^1.0.0  # Replace with the latest version
 ```
 
-## Additional information
+Then run:
+```bash
+flutter pub get
+```
+### Option 2: Using flutter pub add
+Alternatively, you can use the flutter pub add command to automatically add the package to your project:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```bash
+flutter pub add video_skimmer
+```
+This will add the latest version to your pubspec.yaml and run flutter pub get automatically.
+
+## 🚀 Getting Started
+Import the package and drop the `VideoSkimmer` widget into your UI:
+
+```dart
+import 'package:video_skimmer/video_skimmer.dart';
+
+class MyVideoPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: VideoSkimmer(
+        'assets/videos/demo.mp4',
+        onTap: (selectedFrame) {
+          // Do something with selectedFrame.image and selectedFrame.videoTimestampInSeconds
+        },
+        skimmerColor: Colors.blueAccent,
+      ),
+    );
+  }
+}
+```
+
+## 🖥️ Supported Platforms
+
+- ✅ MacOS
+- ✅ Windows
+- ⚠️ Linux / Web / Mobile: Not currently supported — PRs welcome!
+
+## 🧩 Contributing
+Want to improve compatibility or fix bugs? You're very welcome!
