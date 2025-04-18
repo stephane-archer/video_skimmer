@@ -5,6 +5,8 @@ Hover your mouse across the video container and preview frames instantly, just l
 
 Built with ❤️ for MacOS and Windows. Contributions welcome to extend platform support and squash bugs!
 
+![Demo](https://github.com/stephane-archer/video_skimmer/blob/4ee94ee10e3456a0af47cb02372b9b9484581b9e/assets/skimmer-demo.gif)
+
 ## ✨ Features
 
 - Skim through video by simply hovering your mouse.
