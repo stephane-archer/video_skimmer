@@ -1,7 +1,7 @@
 name: video_skimmer
 description: "A lightweight Flutter widget that brings Final Cut-style video skimming to your apps."
 version: 0.0.1
-homepage:
+repository: "https://github.com/stephane-archer/video_skimmer"
 
 environment:
   sdk: ^3.7.2
